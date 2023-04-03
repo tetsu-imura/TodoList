@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/css/list.css}">
+  <style>
+    form {
+        display: inline-block;
+    }
+    tr.del>td {
+        text-decoration: line-through;
+    }
+    tr.del>td.button {
+        text-decoration: none;
+    }
+  </style>
+  <title th:text="#{workingList}"></title>
+</head>
+<body>
+<div layout:fragment="content">
+  <form class="form-inline float-right" action="list" method="get">
+    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search"
+      name="search" th:value="${search}">
+    <button class="btn btn-primary my-2" type="submit">検索</button>
+  </form>
+  <table class="list table table-striped table-hover">
+    <thead>
+      <tr>
+        <th th:text="#{itemName}"></th>
+        <th th:text="#{rep}"></th>
+        <th th:text="#{registrationDate}"></th>
+        <th th:text="#{expireDate}"></th>
+        <th th:text="#{finishedDate}"></th>
+        <th th:text="#{operation}"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <div th:each="item: ${listItems}">
+      <th:block th:if="${item.finishedDate} == '未'">
+        <tr th:class="${item.expireDate} < ${today} ? 'text-danger': ''">
+      </th:block>
+      <th:block th:if="${item.finishedDate} != '未'">
+        <tr class="del">
+      </th:block>
+          <td class="align-middle" th:text="${item.itemName}"></td>
+          <td class="align-middle" th:text="${item.userName}"></td>
+          <td class="align-middle" th:text="${item.registrationDate}"></td>
+          <td class="align-middle" th:text="${item.expireDate}"></td>
+          <td class="align-middle" th:text="${item.finishedDate}"></td>
+          <td class="button">
+            <form action="update" method="post">
+              <input type="hidden" name="id" th:value="${item.id}">
+              <input type="hidden" name="itemName" th:value="${item.itemName}">
+              <input type="hidden" name="userId" th:value="${item.userId}">
+              <input type="hidden" name="expireDate" th:value="${item.expireDate}">
+              <input type="hidden" name="isFinished" th:value="1">
+              <button type="submit" class="btn btn-primary" th:text="#{finished}"></button>
+            </form>
+            <a class="btn btn-secondary" th:text="#{update}" th:href="@{'update' + ${item.id}}"></a>
+            <a class="btn btn-danger" th:text="#{delete}" th:href="@{'delete' + ${item.id}}"></a>
+          </td>
+        </tr>
+      </div>
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

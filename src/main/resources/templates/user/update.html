@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/css/registration.css}">
+  <title th:text="#{registration}"></title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <form th:action="@{'update'}" method="post" class="form-regist" th:object="${inputForm}">
+      <input type="hidden" name="id" th:value="${listItem.id}">
+       <!-- 項目名 -->
+      <div class="form-group">
+        <label for="itemName" th:text="#{itemName}"></label>
+        <input type="text" class="form-control" th:name="itemName" th:value="${listItem.itemName}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{itemName}"></div>
+      </div>
+      <!-- 担当者 -->
+      <div class="form-group">
+        <label for="rep" th:text="#{rep}"></label>
+        <select class="form-control" th:name="userId" th:id="userId"
+          th:errorclass="is-invalid"/>
+          <div th:each="user: ${users}">
+            <option th:value="${user.id}" th:text="${user.familyName + user.firstName}"
+              th:selected="${user.id==listItem.userId}"></option>
+          </div>
+        </select>
+        <div class="text-danger" th:if="${#fields.hasErrors('userId')}"
+          th:errors="*{userId}">
+        </div>
+      </div>
+      <!-- 期限日 -->
+      <div class="form-group">
+        <label for="expireDate" th:text="#{expireDate}"></label>
+        <input type="date" class="form-control" th:name="expireDate" th:value="${listItem.expireDate}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{expireDate}"></div>
+      </div>
+      <!-- 完了 -->
+      <div class="form-group form-check">
+        <label for="isFinished"></label>
+        <input type="checkbox" class="form-check-input" th:name="isFinished" value="1" th:text="#{finished}"
+          th:checked="${listItem.finishedDate != '未'}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{isFinished}"></div>
+      </div>
+      <!-- 登録ボタン -->
+      <input type="submit" th:value="#{update}" class="btn btn-primary mt-3">
+      <!-- キャンセルボタン -->
+      <a th:href="@{'list'}" th:text="#{cancel}" class="btn btn-outline-primary mt-3"></a>
+    </form>
+  </div>
+</body>
+</html>

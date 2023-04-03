@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout:layout}">
+<head>
+</head>
+<body>
+  <nav layout:fragment="header"
+    class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span class="text-light"><b>ToDoリスト</b></span>
+        <a th:href="@{'list'}" th:text="#{workingList}" class="text-light"></a>
+        <a th:href="@{'registration'}" th:text="#{registration}" class="text-light"></a>
+      </div>
+      <form class="form-inline" th:action="@{/logout}" method="post">
+        <span class="text-light" th:text="${name} + 'さん'"></span>
+        <button class="btn btn-outline-light ml-2" type="submit">ログアウト</button>
+      </form>
+    </div>
+  </nav>
+</body>
+</html>

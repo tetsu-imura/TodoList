@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="katachi.spring.todo.repository.UserMapper">
+
+  <!-- usersテーブルからユーザーidで検索 -->
+  <select id="findLoginUser" resultType="User">
+    select
+      *
+    from
+      users
+    where
+      users.id = #{id}
+  </select>
+
+  <!-- usersテーブルからデータ取得 -->
+  <select id="getUsers" resultType="User">
+    select
+      *
+    from
+      users
+  </select>
+
+  <!-- todo_itemsテーブルからデータ取得 -->
+  <select id="getTodoItems" resultType="TodoItem">
+    select
+      *, concat(users.family_name, users.first_name) as userName
+    from
+      todo_items
+    join
+      users
+    on
+      todo_items.user_id = users.id
+    order by
+      todo_items.expire_date
+  </select>
+
+  <!-- todo_itemsテーブルに一件追加 -->
+  <insert id="addTodoItem">
+    insert into todo_items (
+      user_id,
+      item_name,
+      registration_date,
+      expire_date,
+      finished_date
+    )
+    values (
+      #{userId},
+      #{itemName},
+      #{registrationDate},
+      #{expireDate},
+      #{finishedDate}
+    )
+  </insert>
+
+  <!-- todo_itemsテーブルから一件取得 -->
+  <select id="getTodoItem" resultType="TodoItem">
+    select
+      *, concat(users.family_name, users.first_name) as userName
+    from
+      todo_items
+    join
+      users
+    on
+      todo_items.user_id = users.id
+    where
+      todo_items.id = #{id}
+  </select>
+
+  <!-- todo_itemsテーブルの一件に削除フラグをたてる -->
+  <update id="deleteTodoItem">
+    update
+      todo_items
+    set
+      is_deleted = 1
+    where
+      id = #{id}
+  </update>
+
+  <!-- todo_itemsテーブルを一件更新する  -->
+  <update id="updateTodoItem">
+    update
+      todo_items
+    set
+      item_name = #{itemName},
+      user_id = #{userId},
+      expire_date = #{expireDate},
+      finished_date = #{finishedDate}
+    where
+      id = #{id}
+  </update>
+
+  <!-- 検索ワードでデータ取得 -->
+  <select id="searchByWord" resultType="TodoItem">
+    select
+      *, concat(users.family_name, users.first_name) as userName
+    from
+      todo_items
+    join
+      users
+    on
+      todo_items.user_id = users.id
+    where
+      (item_name like concat('%', #{word}, '%'))
+    or
+      (family_name like concat('%', #{word}, '%'))
+    or
+      (first_name like concat('%', #{word}, '%'))
+    order by
+      todo_items.expire_date
+  </select>
+
+  <!-- usersテーブルから姓＋名を取得する -->
+  <select id="getUserName" resultType="String">
+    select
+      concat(users.family_name, users.first_name) as userName
+    from
+      users
+    where
+      user = #{user}
+  </select>
+
+  <!-- idのユーザーが存在するかチェックする -->
+  <select id="isExist" resultType="String">
+    select
+      user
+    from
+      users
+    where
+      id = #{id}
+  </select>
+</mapper>

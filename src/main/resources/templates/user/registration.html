@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/css/registration.css}">
+  <title th:text="#{registration}"></title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <form action="registration" method="post" class="form-regist" th:object="${inputForm}">
+      <!-- 項目名 -->
+      <div class="form-group">
+        <label for="itemName" th:text="#{itemName}"></label>
+        <input type="text" class="form-control" th:field="*{itemName}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{itemName}"></div>
+      </div>
+      <!-- 担当者 -->
+      <div class="form-group">
+        <label for="rep" th:text="#{rep}"></label>
+        <select class="form-control" th:field="*{userId}">
+          <div th:each="user: ${users}">
+            <option th:value="${user.id}" th:text="${user.familyName + user.firstName}"></option>
+          </div>
+        </select>
+      </div>
+      <!-- 期限日 -->
+      <div class="form-group">
+        <label for="expireDate" th:text="#{expireDate}"></label>
+        <input type="date" class="form-control" th:field="*{expireDate}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{expireDate}"></div>
+      </div>
+      <!-- 完了 -->
+      <div class="form-group form-check">
+        <label for="isFinished"></label>
+        <input type="checkbox" class="form-check-input" th:field="*{isFinished}" value="1" th:text="#{finished}"
+          th:errorclass="is-invalid"/>
+        <div class="invalid-feedback" th:errors="*{isFinished}"></div>
+      </div>
+      <!-- 登録ボタン -->
+      <input type="submit" th:value="#{regist}" class="btn btn-primary mt-3">
+      <!-- キャンセルボタン -->
+      <a th:href="@{'list'}" th:text="#{cancel}" class="btn btn-outline-primary mt-3"></a>
+    </form>
+  </div>
+</body>
+</html>

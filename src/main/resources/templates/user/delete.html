@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+<head>
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/css/delete.css}">
+  <title th:text="#{delete}"></title>
+</head>
+<body>
+  <div layout:fragment="content" class="delete">
+
+    <form th:action="@{'delete'}" method="post" class="form-regist">
+      <input type="hidden" name="id" th:value="${listItem.id}">
+      <div class="form-group">
+        <label for="itemName" th:text="#{itemName}"></label>
+        <p name="itemName" class="form-control" th:text="${listItem.itemName}">
+      </div>
+      <div class="form-group">
+        <label for="rep" th:text="#{rep}"></label>
+        <p name="rep" class="form-control" th:text="${listItem.userName}">
+      </div>
+      <div class="form-group">
+        <label for="expireDate" th:text="#{expireDate}"></label>
+        <p name="expireDate" class="form-control" th:text="${listItem.expireDate}">
+      </div>
+      <div class="form-group">
+        <label for="finished" th:text="#{finished}"></label>
+        <p name="finishedDate" class="form-control" th:text="${listItem.finishedDate}">
+      </div>
+      <!-- 削除ボタン -->
+      <input type="submit" th:value="#{delete}" class="btn btn-danger mt-3">
+      <!-- キャンセルボタン -->
+      <a th:href="@{'list'}" th:text="#{cancel}" class="btn btn-outline-primary mt-3"></a>
+    </form>
+  </div>
+</body>
+</html>
