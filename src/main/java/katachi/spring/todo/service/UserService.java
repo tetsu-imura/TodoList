@@ -13,7 +13,7 @@ import katachi.spring.todo.model.User;
 /**
  * ユーザーサービスインターフェース
  * @author T.Imura
- *
+ 
  */
 public interface UserService {
 
