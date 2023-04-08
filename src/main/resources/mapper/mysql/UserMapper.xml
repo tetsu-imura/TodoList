@@ -8,7 +8,15 @@
   <!-- usersテーブルからユーザーidで検索 -->
   <select id="findLoginUser" resultType="User">
     select
-      *
+       id,
+      user,
+      pass,
+      family_name,
+      first_name,
+      is_admin,
+      is_deleted,
+      create_date_time,
+      update_date_time
     from
       users
     where
@@ -18,7 +26,15 @@
   <!-- usersテーブルからデータ取得 -->
   <select id="getUsers" resultType="User">
     select
-      *
+      id,
+      user,
+      pass,
+      family_name,
+      first_name,
+      is_admin,
+      is_deleted,
+      create_date_time,
+      update_date_time
     from
       users
   </select>
@@ -26,15 +42,24 @@
   <!-- todo_itemsテーブルからデータ取得 -->
   <select id="getTodoItems" resultType="TodoItem">
     select
-      *, concat(users.family_name, users.first_name) as userName
+      TI.id,
+      TI.user_id,
+      TI.item_name,
+      TI.registration_date,
+      TI.expire_date,
+      TI.finished_date,
+      TI.is_deleted,
+      TI.create_date_time,
+      TI.update_date_time,
+      concat(U.family_name, U.first_name) as userName
     from
-      todo_items
+      todo_items AS TI
     join
-      users
+      users AS U
     on
-      todo_items.user_id = users.id
+      TI.user_id = U.id
     order by
-      todo_items.expire_date
+      TI.expire_date
   </select>
 
   <!-- todo_itemsテーブルに一件追加 -->
@@ -58,15 +83,24 @@
   <!-- todo_itemsテーブルから一件取得 -->
   <select id="getTodoItem" resultType="TodoItem">
     select
-      *, concat(users.family_name, users.first_name) as userName
+      TI.id,
+      TI.user_id,
+      TI.item_name,
+      TI.registration_date,
+      TI.expire_date,
+      TI.finished_date,
+      TI.is_deleted,
+      TI.create_date_time,
+      TI.update_date_time,
+      concat(U.family_name, U.first_name) as userName
     from
-      todo_items
+      todo_items AS TI
     join
-      users
+      users AS U
     on
-      todo_items.user_id = users.id
+      TI.user_id = U.id
     where
-      todo_items.id = #{id}
+      TI.id = #{id}
   </select>
 
   <!-- todo_itemsテーブルの一件に削除フラグをたてる -->
@@ -95,21 +129,30 @@
   <!-- 検索ワードでデータ取得 -->
   <select id="searchByWord" resultType="TodoItem">
     select
-      *, concat(users.family_name, users.first_name) as userName
+      TI.id,
+      TI.user_id,
+      TI.item_name,
+      TI.registration_date,
+      TI.expire_date,
+      TI.finished_date,
+      TI.is_deleted,
+      TI.create_date_time,
+      TI.update_date_time,
+      concat(U.family_name, U.first_name) as userName
     from
-      todo_items
+      todo_items AS TI
     join
-      users
+      users AS U
     on
-      todo_items.user_id = users.id
+      TI.user_id = U.id
     where
-      (item_name like concat('%', #{word}, '%'))
+      (TI.item_name like concat('%', #{word}, '%'))
     or
-      (family_name like concat('%', #{word}, '%'))
+      (U.family_name like concat('%', #{word}, '%'))
     or
-      (first_name like concat('%', #{word}, '%'))
+      (U.first_name like concat('%', #{word}, '%'))
     order by
-      todo_items.expire_date
+      TI.expire_date
   </select>
 
   <!-- usersテーブルから姓＋名を取得する -->
