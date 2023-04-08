@@ -46,10 +46,12 @@ public interface UserMapper {
 			Date finishedDate
 	);
 
-	//
+	// 検索ワードでデータを取得する
 	public List<TodoItem> searchByWord(String word);
 
+	// usersテーブルから姓＋名を取得する
 	public String getUserName(String user);
 
+	// idのユーザーが存在するかチェックする
 	public String isExist(Integer id);
 }
