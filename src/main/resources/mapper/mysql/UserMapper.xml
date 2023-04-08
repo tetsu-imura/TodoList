@@ -8,7 +8,7 @@
   <!-- usersテーブルからユーザーidで検索 -->
   <select id="findLoginUser" resultType="User">
     select
-       id,
+      id,
       user,
       pass,
       family_name,
