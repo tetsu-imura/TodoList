@@ -5,24 +5,6 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="katachi.spring.todo.repository.UserMapper">
 
-  <!-- usersテーブルからユーザーidで検索 -->
-  <select id="findLoginUser" resultType="User">
-    select
-      id,
-      user,
-      pass,
-      family_name,
-      first_name,
-      is_admin,
-      is_deleted,
-      create_date_time,
-      update_date_time
-    from
-      users
-    where
-      users.id = #{id}
-  </select>
-
   <!-- usersテーブルからデータ取得 -->
   <select id="getUsers" resultType="User">
     select

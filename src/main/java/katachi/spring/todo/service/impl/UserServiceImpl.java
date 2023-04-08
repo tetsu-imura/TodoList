@@ -28,11 +28,6 @@ public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 
 	@Override
-	public User findLoginUser(Integer id) {
-		return mapper.findLoginUser(id);
-	}
-
-	@Override
 	public List<User> getUsers() {
 		return mapper.getUsers();
 	}

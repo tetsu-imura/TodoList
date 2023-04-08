@@ -16,9 +16,6 @@ import katachi.spring.todo.model.User;
 @Mapper
 public interface UserMapper {
 
-	// ログインユーザー取得
-	public User findLoginUser(Integer id);
-
 	// ユーザー一覧情報を取得する
 	public List<User> getUsers();
 

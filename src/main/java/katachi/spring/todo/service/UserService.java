@@ -18,13 +18,6 @@ import katachi.spring.todo.model.User;
 public interface UserService {
 
 	/**
-	 * idでユーザーを検索する。
-	 * @param id
-	 * @return
-	 */
-	public User findLoginUser(Integer id);
-
-	/**
 	 * usersテーブルから全件取得する。
 	 * @return
 	 */
