@@ -5,7 +5,7 @@
 
 Java + Springbootの学習のために作りました。
 
-![スクリーンショット (1)](https://user-images.githubusercontent.com/113958600/231663733-d06763df-d970-49f0-a77d-028428dcf04b.png)
+![TodoList](https://user-images.githubusercontent.com/113958600/231665721-55e7a593-c516-4458-b858-0f75e07c60fc.png)
 
 ## 実装環境
 
