@@ -29,6 +29,10 @@ CSSフレームワーク：Bootstrap
 
 ### 更新機能
 
-![TodoList更新](https://user-images.githubusercontent.com/113958600/231667437-78acf53e-bb51-449b-bc14-acc30c453d61.png)
+
 
 ### 削除機能
+
+![TodoList削除](https://user-images.githubusercontent.com/113958600/231669035-05e11f40-7555-479c-a70a-0b26c0092f4a.png)
+
+
