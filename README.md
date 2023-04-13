@@ -33,6 +33,13 @@ CSSフレームワーク：Bootstrap
 
 ### 一覧表示機能
 
+<ul>
+  <li>Todoリストに登録された作業一覧を表示します。</li>
+  <li>未削除の項目を、期限日の古いものから表示します。</li>
+</ul>
+
+### 検索機能
+
 ### 新規登録機能
 
 ![TodoList新規登録](https://user-images.githubusercontent.com/113958600/231667401-31961e22-3e4e-40f7-8fa0-d51ffeac20fb.png)
