@@ -18,3 +18,9 @@ Java + Springbootの学習のために作りました。
 CSSフレームワーク：Bootstrap
 
 データベース：MySQL
+
+##　機能
+<ul>
+  <li>一覧表示機能</li>
+  <li>新規登録機能</li>
+</ul>
