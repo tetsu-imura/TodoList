@@ -1,7 +1,7 @@
 # TodoList
 
 ## 概要
-Todoリストです。
+共有Todoリストです。
 
 Java + Springbootの学習のために作りました。
 
