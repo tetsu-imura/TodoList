@@ -25,8 +25,10 @@ CSSフレームワーク：Bootstrap
 
 ### 新規登録機能
 
-![TodoList 新規登録](https://user-images.githubusercontent.com/113958600/231666826-3f504844-da0d-4898-b5b2-d4a89610620a.png)
+![TodoList新規登録](https://user-images.githubusercontent.com/113958600/231667401-31961e22-3e4e-40f7-8fa0-d51ffeac20fb.png)
 
 ### 更新機能
+
+![TodoList更新](https://user-images.githubusercontent.com/113958600/231667437-78acf53e-bb51-449b-bc14-acc30c453d61.png)
 
 ### 削除機能
