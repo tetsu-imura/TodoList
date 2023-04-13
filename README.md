@@ -47,6 +47,15 @@ CSSフレームワーク：Bootstrap
 
 ### 新規登録機能
 
+以下のバリデーションを行います。
+
+<ul>
+  <li>項目名が空白でないこと。</li>
+  <li>項目名が100文字以内であること</li>
+  <li>期限日がnullでないこと。</li>
+  <li>期限日がyyyy-MM-dd形式であること。</li>
+</ul>
+
 ![TodoList新規登録](https://user-images.githubusercontent.com/113958600/231667401-31961e22-3e4e-40f7-8fa0-d51ffeac20fb.png)
 
 ### 更新機能
