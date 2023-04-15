@@ -51,6 +51,8 @@ CSSフレームワーク：Bootstrap
 
 ### 新規登録機能
 
+![TodoList新規登録](https://user-images.githubusercontent.com/113958600/232177322-df16fc92-c081-49ff-a303-45ad20ef82fd.png)
+
 以下のバリデーションを行います。
 
 <ul>
@@ -60,7 +62,7 @@ CSSフレームワーク：Bootstrap
   <li>期限日がyyyy-MM-dd形式であること。</li>
 </ul>
 
-![TodoList新規登録](https://user-images.githubusercontent.com/113958600/232177322-df16fc92-c081-49ff-a303-45ad20ef82fd.png)
+![TodoListバリデーション](https://user-images.githubusercontent.com/113958600/232177500-4b3a7a01-c631-467a-9127-898401ea40f0.png)
 
 ### 更新機能
 
