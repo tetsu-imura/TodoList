@@ -74,7 +74,7 @@ CSSフレームワーク：Bootstrap
 
 <ul>
   <li>該当する作業項目をデータベースから検索し、登録内容の更新を行います。</li>
-  <li>入力値のバリデーションを行いｍす。</li>
+  <li>入力値のバリデーションを行います。</li>
 </ul>
 
 ![TodoList更新](https://user-images.githubusercontent.com/113958600/232177330-07a5fc51-35ac-4550-9f2b-afe739169143.png)
