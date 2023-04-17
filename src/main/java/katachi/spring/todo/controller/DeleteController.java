@@ -71,6 +71,7 @@ public class DeleteController {
 
 		log.info("# DeleteController:postDelete() id:" + id);
 
+		// todo_itemsテーブルから一件削除(論理削除)する。
 		userService.deleteTodoItem(id);
 
 		return "redirect:/user/list";

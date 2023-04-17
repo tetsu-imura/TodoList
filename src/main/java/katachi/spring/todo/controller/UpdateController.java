@@ -98,15 +98,18 @@ public class UpdateController {
 			bindingResult.addError(fieldError);
 		}
 
+		// バリデーション
 		if (bindingResult.hasErrors()) {
 			return getUpdate(model, principal, form, id);
 		}
 
+		// 完了の場合、今日の日付
 		Date finishedDate = new Date();
 		if(form.getIsFinished() == null) {
 			finishedDate = null;
 		}
 
+		// todo_itemsテーブルを一件更新する。
 		userService.updateTodoItem(
 				id,
 				form.getItemName(),

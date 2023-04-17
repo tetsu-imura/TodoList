@@ -48,8 +48,10 @@ public class ListController {
 
 		List<TodoItem> todoItems = new ArrayList<>();
 		if(search == null) {
+			// 作業一覧を取得する。
 			todoItems = userService.getTodoItems();
 		} else {
+			// 検索ワードで一覧を取得する。
 			todoItems = userService.searchByWord(search);
 		}
 		// 検索ワードを検索欄に残す

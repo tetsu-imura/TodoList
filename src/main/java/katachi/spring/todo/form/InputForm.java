@@ -22,12 +22,12 @@ public class InputForm {
 	@Length(max=100)
 	private String itemName;		// 項目名
 
-	private Integer userId;		// 担当者
+	private Integer userId;			// 担当者
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date expireDate;		// 期限日
 
-	private Integer isFinished;	// 完了
+	private Integer isFinished;		// 完了
 
 }

@@ -104,8 +104,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void setLoginName(Model model, Principal principal) {
 
-		String user = principal.getName();	// ログインuser="test1"を取得
-		String name = getUserName(user);	// "テスト"＋"花子"を取得
+		String user = principal.getName();	// ログインuserを取得
+		String name = getUserName(user);	// "姓"＋"名"を取得
 		model.addAttribute("name", name);	// Modelに登録
 	}
 

@@ -76,14 +76,17 @@ public class RegistrationController {
 
 		log.info("# RegistrationController:postRegistration()");
 
+		// バリデーション
 		if (bindingResult.hasErrors()) {
 			return getRegistration(model, principal, form);
 		}
 
 		Date date = new Date();
+
+		// 完了の場合、今日の日付
 		Date finishedDate = null;
 		if(form.getIsFinished() != null) {
-			finishedDate = date; // 完了の場合、今日の日付
+			finishedDate = date;
 		}
 
 		// 受け取った情報をデータベースに保存する
